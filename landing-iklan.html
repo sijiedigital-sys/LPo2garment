@@ -1,0 +1,442 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>O2 Garment — Konveksi Seragam Presisi, Tepat Waktu</title>
+<meta name="description" content="Konsultasi gratis kebutuhan seragam kantor, lapangan, jaket, dan medis. Akurasi hasil 97% sesuai desain, respon maksimal 24 jam.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link href="https://fonts.googleapis.com/css2?family=Archivo+Expanded:wght@500;600;700&family=IBM+Plex+Sans:wght@400;500;600&family=IBM+Plex+Mono:wght@400;500&display=swap" rel="stylesheet">
+<style>
+:root{
+  --ink:#1A1A1A;
+  --paper:#F5F4F1;
+  --paper-warm:#EFEDE7;
+  --rust:#C8392B;
+  --rust-dark:#9C2C20;
+  --line-soft:#D8D5CC;
+  --gray:#6E6C66;
+  --gray-light:#9C9A93;
+  --white:#FFFFFF;
+  --font-display:'Archivo Expanded','Oswald',sans-serif;
+  --font-body:'IBM Plex Sans','Inter',sans-serif;
+  --font-mono:'IBM Plex Mono',monospace;
+}
+*{margin:0;padding:0;box-sizing:border-box;}
+html{scroll-behavior:smooth;}
+body{
+  font-family:var(--font-body);
+  background:var(--paper);
+  color:var(--ink);
+  line-height:1.6;
+  font-size:16px;
+  -webkit-font-smoothing:antialiased;
+}
+img{display:block;max-width:100%;}
+a{color:inherit;text-decoration:none;}
+.wrap{max-width:1080px;margin:0 auto;padding:0 24px;}
+
+.eyebrow{
+  font-family:var(--font-mono);
+  font-size:12px;
+  letter-spacing:0.22em;
+  text-transform:uppercase;
+  color:var(--rust);
+  display:flex;align-items:center;gap:12px;
+  margin-bottom:16px;
+}
+.eyebrow::before{content:"";display:block;width:28px;height:2px;background:var(--rust);}
+
+h1,h2,h3,h4{
+  font-family:var(--font-display);
+  font-weight:600;
+  text-transform:uppercase;
+  letter-spacing:0.01em;
+  line-height:1.1;
+}
+h1{font-size:clamp(34px,6vw,64px);}
+h2{font-size:clamp(26px,4vw,42px);}
+h3{font-size:18px;letter-spacing:0.04em;}
+
+p{color:var(--gray);}
+.lead{font-size:18px;color:#46443F;max-width:520px;}
+
+.btn{
+  display:inline-flex;align-items:center;gap:10px;
+  font-family:var(--font-mono);
+  font-size:14px;letter-spacing:0.12em;text-transform:uppercase;
+  padding:18px 32px;
+  border:1.5px solid var(--ink);
+  background:transparent;color:var(--ink);
+  cursor:pointer;
+  transition:background .18s ease,color .18s ease;
+  white-space:nowrap;
+}
+.btn:hover{background:var(--ink);color:var(--paper);}
+.btn-solid{background:var(--rust);border-color:var(--rust);color:var(--white);}
+.btn-solid:hover{background:var(--rust-dark);border-color:var(--rust-dark);color:var(--white);}
+.btn-arrow::after{content:"→";font-family:var(--font-body);transition:transform .18s ease;}
+.btn:hover .btn-arrow::after{transform:translateX(4px);}
+.btn-lg{padding:20px 40px;font-size:15px;}
+.btn-block{width:100%;justify-content:center;}
+
+/* Sticky top bar - mobile WA CTA */
+.sticky-cta{
+  position:fixed;bottom:0;left:0;right:0;
+  background:var(--ink);
+  padding:14px 20px;
+  display:none;
+  z-index:200;
+  text-align:center;
+}
+.sticky-cta a{color:var(--white);font-family:var(--font-mono);font-size:13px;letter-spacing:0.12em;text-transform:uppercase;}
+
+/* Top bar */
+.topbar{
+  background:var(--ink);color:var(--paper-warm);
+  font-family:var(--font-mono);
+  font-size:12px;letter-spacing:0.1em;text-transform:uppercase;
+  text-align:center;
+  padding:10px 16px;
+}
+.topbar b{color:var(--rust);}
+
+/* Header */
+header{padding:20px 0;border-bottom:1px solid var(--ink);}
+.header-inner{display:flex;align-items:center;justify-content:space-between;}
+.logo img{height:32px;width:auto;}
+
+/* Hero */
+.hero{padding:64px 0 80px;}
+.hero-grid{display:grid;grid-template-columns:1.1fr 0.9fr;gap:48px;align-items:center;}
+.hero-copy h1{margin-bottom:20px;}
+.hero-copy .lead{margin-bottom:32px;}
+.hero-badges{display:flex;gap:24px;margin-top:40px;flex-wrap:wrap;}
+.hero-badge{display:flex;flex-direction:column;gap:4px;}
+.hero-badge .num{font-family:var(--font-display);font-size:32px;font-weight:600;color:var(--rust);line-height:1;}
+.hero-badge .label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray);}
+
+.hero-visual{
+  aspect-ratio:4/5;background:var(--ink);
+  background-image:repeating-linear-gradient(135deg,#2A2A28 0px,#2A2A28 2px,transparent 2px,transparent 14px);
+  display:flex;align-items:center;justify-content:center;
+  position:relative;
+}
+.hero-visual::after{
+  content:"FOTO PRODUK / WORKSHOP";
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.12em;text-transform:uppercase;
+  color:var(--gray-light);border:1px solid #4A4944;padding:8px 16px;background:rgba(26,26,26,.6);
+}
+.hero-visual .tag{
+  position:absolute;bottom:20px;left:20px;
+  background:var(--rust);color:var(--white);
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;
+  padding:10px 16px;
+}
+
+/* Sections */
+section{padding:72px 0;}
+.section-head{text-align:center;max-width:640px;margin:0 auto 48px;}
+.section-head .eyebrow{justify-content:center;}
+.section-head .eyebrow::before{display:none;}
+.section-head h2{margin-bottom:12px;}
+.section-head .lead{margin:0 auto;}
+
+/* Why grid */
+.why-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:1px;background:var(--ink);border:1px solid var(--ink);}
+.why-item{background:var(--paper);padding:32px 24px;display:flex;flex-direction:column;gap:12px;}
+.why-item .idx{font-family:var(--font-mono);font-size:12px;color:var(--rust);letter-spacing:0.1em;}
+.why-item h3{font-size:16px;}
+.why-item p{font-size:13px;margin:0;}
+
+/* Category cards */
+.cat-grid{display:grid;grid-template-columns:repeat(4,1fr);gap:20px;}
+.cat-card{position:relative;aspect-ratio:3/4;overflow:hidden;background:var(--ink);
+  background-image:repeating-linear-gradient(135deg,#2A2A28 0px,#2A2A28 2px,transparent 2px,transparent 14px);}
+.cat-card .info{position:absolute;left:0;bottom:0;right:0;padding:16px;background:linear-gradient(180deg,transparent,rgba(26,26,26,.92) 70%);}
+.cat-card .info h4{color:var(--white);font-size:14px;font-family:var(--font-display);text-transform:uppercase;letter-spacing:0.05em;}
+.cat-card .info span{font-family:var(--font-mono);font-size:10px;letter-spacing:0.1em;color:var(--paper-warm);text-transform:uppercase;}
+
+/* Process */
+.process-list{display:grid;grid-template-columns:repeat(4,1fr);gap:0;border-top:1px solid var(--ink);border-bottom:1px solid var(--ink);}
+.process-item{padding:28px 20px;border-right:1px solid var(--line-soft);display:flex;flex-direction:column;gap:10px;}
+.process-item:last-child{border-right:none;}
+.process-item .step{font-family:var(--font-display);font-size:28px;font-weight:600;color:var(--line-soft);}
+.process-item h4{font-size:13px;font-family:var(--font-display);text-transform:uppercase;letter-spacing:0.05em;}
+.process-item p{font-size:13px;margin:0;}
+
+/* Testimonials */
+.testi-grid{display:grid;grid-template-columns:repeat(3,1fr);gap:20px;}
+.testi-card{border:1px solid var(--line-soft);padding:28px;display:flex;flex-direction:column;gap:18px;background:var(--white);}
+.testi-card .quote{font-size:14px;color:var(--ink);}
+.testi-card .who{font-family:var(--font-mono);font-size:12px;border-top:1px solid var(--line-soft);padding-top:14px;}
+.testi-card .who b{display:block;font-family:var(--font-body);font-size:14px;font-weight:600;margin-bottom:2px;text-transform:none;letter-spacing:0;}
+.testi-card .who span{color:var(--gray);text-transform:uppercase;}
+
+/* Lead form */
+.form-section{background:var(--ink);color:var(--paper);}
+.form-section .section-head h2{color:var(--white);}
+.form-section .section-head .lead{color:var(--gray-light);}
+.form-card{
+  max-width:560px;margin:0 auto;
+  border:1px solid #3A3A38;
+  padding:40px;background:#222220;
+}
+.form-row{display:grid;grid-template-columns:1fr 1fr;gap:14px;margin-bottom:14px;}
+.form-group{display:flex;flex-direction:column;gap:8px;margin-bottom:14px;}
+.form-group label{font-family:var(--font-mono);font-size:11px;letter-spacing:0.1em;text-transform:uppercase;color:var(--gray-light);}
+.form-group input,.form-group select,.form-group textarea{
+  border:1px solid #3A3A38;background:#1A1A18;color:var(--paper);
+  padding:13px 14px;font-family:var(--font-body);font-size:14px;
+}
+.form-group input:focus,.form-group select:focus,.form-group textarea:focus{outline:none;border-color:var(--rust);}
+.form-group input::placeholder,.form-group textarea::placeholder{color:#6E6C66;}
+.form-note{font-family:var(--font-mono);font-size:11px;color:var(--gray-light);text-align:center;margin-top:16px;letter-spacing:0.05em;}
+
+/* Final CTA */
+.final-cta{text-align:center;}
+.final-cta h2{margin-bottom:16px;}
+.final-cta .lead{margin:0 auto 32px;}
+.final-actions{display:flex;gap:16px;justify-content:center;flex-wrap:wrap;}
+
+/* Footer */
+footer{padding:32px 0;border-top:1px solid var(--line-soft);}
+.footer-inner{display:flex;justify-content:space-between;align-items:center;flex-wrap:wrap;gap:12px;
+  font-family:var(--font-mono);font-size:11px;letter-spacing:0.05em;color:var(--gray);}
+
+/* Responsive */
+@media (max-width:1024px){
+  .hero-grid{grid-template-columns:1fr;}
+  .hero-visual{order:-1;aspect-ratio:16/9;}
+  .why-grid{grid-template-columns:repeat(2,1fr);}
+  .cat-grid{grid-template-columns:repeat(2,1fr);}
+  .process-list{grid-template-columns:repeat(2,1fr);}
+  .process-item{border-bottom:1px solid var(--line-soft);}
+  .testi-grid{grid-template-columns:1fr;}
+}
+@media (max-width:640px){
+  .why-grid{grid-template-columns:1fr;}
+  .cat-grid{grid-template-columns:1fr;}
+  .process-list{grid-template-columns:1fr;}
+  .form-row{grid-template-columns:1fr;}
+  .form-card{padding:24px;}
+  body{padding-bottom:64px;}
+  .sticky-cta{display:block;}
+  .hero-badges{justify-content:space-between;}
+  .final-actions{flex-direction:column;}
+  .final-actions .btn{width:100%;justify-content:center;}
+}
+</style>
+</head>
+<body>
+
+<div class="topbar">Konsultasi gratis — respon dalam <b>24 jam</b></div>
+
+<header>
+  <div class="wrap header-inner">
+    <div class="logo"><img src="logo.png" alt="O2 Garment — Textile &amp; Garment Industry"></div>
+    <a href="https://wa.me/62800000000" class="btn btn-solid">WhatsApp</a>
+  </div>
+</header>
+
+<section class="hero">
+  <div class="wrap hero-grid">
+    <div class="hero-copy">
+      <div class="eyebrow">Konveksi seragam &amp; pakaian khusus</div>
+      <h1>Seragam presisi,<br>dikerjakan tepat waktu.</h1>
+      <p class="lead">Konsultasikan kebutuhan seragam kantor, lapangan, jaket, hingga medis — gratis. Tim kami bantu pilih bahan, desain, dan jadwal produksi sesuai budget Anda.</p>
+      <div style="display:flex; gap:16px; flex-wrap:wrap;">
+        <a href="https://wa.me/62800000000" class="btn btn-solid btn-lg btn-arrow">Konsultasi via WhatsApp</a>
+        <a href="#form" class="btn btn-lg">Isi Form</a>
+      </div>
+      <div class="hero-badges">
+        <div class="hero-badge"><div class="num">97%</div><div class="label">Akurasi hasil vs desain</div></div>
+        <div class="hero-badge"><div class="num">24h</div><div class="label">Respon &amp; solusi maksimal</div></div>
+        <div class="hero-badge"><div class="num">3+</div><div class="label">Tahun pengalaman B2B</div></div>
+      </div>
+    </div>
+    <div class="hero-visual">
+      <div class="tag">Workshop — Surabaya</div>
+    </div>
+  </div>
+</section>
+
+<section class="why">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Mengapa O2 Garment</div>
+      <h2>Tidak khawatir lagi soal vendor.</h2>
+      <p class="lead">Kami merancang proses kerja di sekitar tiga keluhan paling sering dari klien: keterlambatan, hasil tidak sesuai desain, dan komunikasi yang lambat.</p>
+    </div>
+    <div class="why-grid">
+      <div class="why-item">
+        <div class="idx">01</div>
+        <h3>Pola standar Asia</h3>
+        <p>Hasil jahitan, bordir, sablon, dan molding konsisten di setiap batch.</p>
+      </div>
+      <div class="why-item">
+        <div class="idx">02</div>
+        <h3>Tepat waktu</h3>
+        <p>Jadwal yang disepakati adalah komitmen — kecuali ada force majeur.</p>
+      </div>
+      <div class="why-item">
+        <div class="idx">03</div>
+        <h3>Respon cepat</h3>
+        <p>Setiap kendala ditindaklanjuti dengan solusi maksimal 1x24 jam.</p>
+      </div>
+      <div class="why-item">
+        <div class="idx">04</div>
+        <h3>Satu pintu</h3>
+        <p>Kaos, PDH, PDL, jaket, topi, wearpack — satu vendor, satu alur produksi.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="categories">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Produk populer</div>
+      <h2>Kategori yang paling sering dipesan.</h2>
+    </div>
+    <div class="cat-grid">
+      <div class="cat-card"><div class="info"><h4>Seragam Kantor</h4><span>PDH · PDL · Polo</span></div></div>
+      <div class="cat-card"><div class="info"><h4>Wearpack &amp; Safety</h4><span>Coverall · Vest</span></div></div>
+      <div class="cat-card"><div class="info"><h4>Jaket Korporat</h4><span>Bomber · Hoodie · Varsity</span></div></div>
+      <div class="cat-card"><div class="info"><h4>Seragam Medis</h4><span>Scrub · Jas Operasi</span></div></div>
+    </div>
+  </div>
+</section>
+
+<section class="process">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Cara kerja</div>
+      <h2>4 langkah dari konsultasi sampai diterima.</h2>
+    </div>
+    <div class="process-list">
+      <div class="process-item">
+        <div class="step">01</div>
+        <h4>Konsultasi</h4>
+        <p>Diskusi kebutuhan, jumlah, dan budget — gratis tanpa komitmen.</p>
+      </div>
+      <div class="process-item">
+        <div class="step">02</div>
+        <h4>Sampel &amp; Approval</h4>
+        <p>Sampel dibuat dan disetujui sebelum produksi massal dimulai.</p>
+      </div>
+      <div class="process-item">
+        <div class="step">03</div>
+        <h4>Produksi &amp; QC</h4>
+        <p>Dikerjakan sesuai timeline dengan pengecekan kualitas tiap tahap.</p>
+      </div>
+      <div class="process-item">
+        <div class="step">04</div>
+        <h4>Pengiriman</h4>
+        <p>Dikemas rapi dan dikirim sesuai jadwal yang disepakati.</p>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="testimonials">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Apa kata klien</div>
+      <h2>Bukan promo kosong.</h2>
+    </div>
+    <div class="testi-grid">
+      <div class="testi-card">
+        <p class="quote">"Tim O2 Garment responsif dan terbuka untuk revisi. Hasil sesuai yang kami minta, pengiriman tepat waktu."</p>
+        <div class="who"><b>[Nama Klien]</b><span>[Jabatan, Perusahaan]</span></div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Komunikasi mudah, sales fast response. Kualitas bordir dan jahitan konsisten dari sampel sampai produksi massal."</p>
+        <div class="who"><b>[Nama Klien]</b><span>[Jabatan, Perusahaan]</span></div>
+      </div>
+      <div class="testi-card">
+        <p class="quote">"Sangat membantu untuk budget terbatas — diberi opsi bahan yang sesuai tanpa mengorbankan kualitas."</p>
+        <div class="who"><b>[Nama Klien]</b><span>[Instansi]</span></div>
+      </div>
+    </div>
+  </div>
+</section>
+
+<section class="form-section" id="form">
+  <div class="wrap">
+    <div class="section-head">
+      <div class="eyebrow">Mulai sekarang</div>
+      <h2>Konsultasi gratis, isi form ini.</h2>
+      <p class="lead">Sertakan jenis pakaian, perkiraan jumlah, dan timeline. Tim kami akan merespon dalam 24 jam.</p>
+    </div>
+    <div class="form-card">
+      <div class="form-row">
+        <div class="form-group">
+          <label for="nama">Nama</label>
+          <input type="text" id="nama" placeholder="Nama lengkap">
+        </div>
+        <div class="form-group">
+          <label for="instansi">Instansi / Perusahaan</label>
+          <input type="text" id="instansi" placeholder="Nama instansi">
+        </div>
+      </div>
+      <div class="form-row">
+        <div class="form-group">
+          <label for="telepon">Nomor WhatsApp</label>
+          <input type="tel" id="telepon" placeholder="08XX-XXXX-XXXX">
+        </div>
+        <div class="form-group">
+          <label for="jumlah">Perkiraan Jumlah</label>
+          <select id="jumlah">
+            <option>Kurang dari 100 Pcs</option>
+            <option>100 – 500 Pcs</option>
+            <option>500 – 1.000 Pcs</option>
+            <option>Lebih dari 1.000 Pcs</option>
+          </select>
+        </div>
+      </div>
+      <div class="form-group">
+        <label for="jenis">Jenis Pakaian</label>
+        <select id="jenis">
+          <option>Seragam Kantor (Kemeja/Polo/Kaos)</option>
+          <option>Seragam Lapangan (Wearpack/Vest)</option>
+          <option>Jaket &amp; Outer</option>
+          <option>Seragam Medis</option>
+          <option>Lainnya / Custom</option>
+        </select>
+      </div>
+      <div class="form-group">
+        <label for="pesan">Detail Kebutuhan (opsional)</label>
+        <textarea id="pesan" rows="3" placeholder="Timeline, referensi desain, atau hal lain yang ingin disampaikan"></textarea>
+      </div>
+      <button class="btn btn-solid btn-lg btn-block btn-arrow" type="button">Kirim &amp; Konsultasi Gratis</button>
+      <p class="form-note">Atau langsung chat via WhatsApp untuk respon lebih cepat</p>
+    </div>
+  </div>
+</section>
+
+<section class="final-cta">
+  <div class="wrap">
+    <div class="eyebrow" style="justify-content:center;">Tidak perlu komitmen</div>
+    <h2>Konsultasi hari ini, dapat penawaran sebelum besok.</h2>
+    <p class="lead">Tim kami siap membantu dari pemilihan bahan sampai pengiriman.</p>
+    <div class="final-actions">
+      <a href="https://wa.me/62800000000" class="btn btn-solid btn-lg btn-arrow">Chat via WhatsApp</a>
+      <a href="#form" class="btn btn-lg">Isi Form Konsultasi</a>
+    </div>
+  </div>
+</section>
+
+<footer>
+  <div class="wrap footer-inner">
+    <span>© 2026 O2 Garment</span>
+    <span>O2 Garment adalah brand dari PT. Sakinah Langgeng Makmur &amp; CV Berkah Abadi</span>
+  </div>
+</footer>
+
+<div class="sticky-cta">
+  <a href="https://wa.me/62800000000">Konsultasi via WhatsApp →</a>
+</div>
+
+</body>
+</html>
